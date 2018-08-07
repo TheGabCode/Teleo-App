@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="gab.cdi.teleo.activities.SignUpViaApp">
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+            <TextView
+                android:id="@+id/try_teleo_banner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="25dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="60dp"
+                android:fontFamily="@font/roboto_light"
+                android:text="Try TELEO today!"
+                android:textColor="#fff"
+                android:textSize="36sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/signUpFieldsMainContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="37dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/try_teleo_banner">
+
+                <LinearLayout
+                    android:id="@+id/fieldLabels"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical"
+                    android:paddingTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:fontFamily="@font/roboto_light"
+                        android:text="Full Name"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:fontFamily="@font/roboto_light"
+                        android:text="Username"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:fontFamily="@font/roboto_light"
+                        android:text="Email"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:fontFamily="@font/roboto_light"
+                        android:text="Phone Number"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fields"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/fullnameEditText"
+                        android:layout_width="200dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="3dp"
+                        android:background="#fff"
+                        android:inputType="text"
+                        android:paddingLeft="5dp"
+                        android:textColor="#000000" />
+
+                    <EditText
+                        android:id="@+id/usernameEditText"
+                        android:layout_width="200dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="3dp"
+                        android:background="#fff"
+                        android:inputType="text"
+                        android:paddingLeft="5dp"
+                        android:textColor="#000000" />
+
+                    <EditText
+                        android:id="@+id/emailEditText"
+                        android:layout_width="200dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="3dp"
+                        android:background="#fff"
+                        android:inputType="textEmailAddress"
+                        android:paddingLeft="5dp"
+                        android:textColor="#000000" />
+
+                    <EditText
+                        android:id="@+id/phoneNumberEditText"
+                        android:layout_width="200dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="3dp"
+                        android:background="#fff"
+                        android:inputType="phone"
+                        android:paddingLeft="5dp"
+                        android:textColor="#000000" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/signUpFieldsMainContainer">
+
+                <CheckBox
+                    android:id="@+id/termsCheckbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="25dp"
+                    android:fontFamily="@font/roboto_light"
+                    android:text="I have read and agree to \n the terms and conditions" />
+                <CheckBox
+                    android:id="@+id/updatesCheckbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_light"
+                    android:text="I have read and agree to receive \nthe Mandelei update via email" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/finalizeSignUpButton"
+                android:layout_width="150dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="39dp"
+                android:background="@drawable/round_shape_btn_l_gray"
+                android:fontFamily="@font/roboto_light"
+                android:text="Sign up"
+                android:textAllCaps="false"
+                android:textColor="#000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+            <TextView
+                android:id="@+id/corpLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/roboto_light"
+                android:text="\u00A9 Mandelei Multimedia Corp"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.504"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/finalizeSignUpButton"/>
+
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.constraint.ConstraintLayout>
