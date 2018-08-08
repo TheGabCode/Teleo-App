@@ -5,15 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#2D2D2D"
-    tools:context="gab.cdi.teleo.activities.Registration">
+    tools:context="gab.cdi.teleo.activities.Registration"
+    tools:layout_editor_absoluteY="25dp">
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -21,8 +18,8 @@
 
             <ImageView
                 android:id="@+id/teleo_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/teleo_logo_size"
+                android:layout_height="@dimen/teleo_logo_size"
                 android:layout_marginTop="50dp"
                 android:src="@drawable/teleo_logo"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +36,7 @@
                 android:fontFamily="@font/roboto_bold"
                 android:text="Redefine your \n viewing habit!"
                 android:textColor="#fff"
-                android:textSize="36sp"
+                android:textSize="@dimen/textSizeHeader1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/teleo_logo" />
@@ -49,7 +46,7 @@
                 android:id="@+id/teleo_banners"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="3dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +60,7 @@
                     android:fontFamily="@font/roboto_light"
                     android:text="Try"
                     android:textColor="#fff"
-                    android:textSize="20sp" />
+                    android:textSize="@dimen/textSizeHeader2" />
 
                 <TextView
                     android:id="@+id/teleo_banner_alt_2"
@@ -74,7 +71,7 @@
                     android:text="Teleo"
                     android:textAllCaps="true"
                     android:textColor="#fff"
-                    android:textSize="20sp" />
+                    android:textSize="@dimen/textSizeHeader2" />
 
                 <TextView
                     android:id="@+id/teleo_banner_alt_3"
@@ -83,7 +80,7 @@
                     android:fontFamily="@font/roboto_light"
                     android:text="today!"
                     android:textColor="#fff"
-                    android:textSize="20sp" />
+                    android:textSize="@dimen/textSizeHeader2" />
             </LinearLayout>
 
             <Button
@@ -93,7 +90,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginEnd="85dp"
                 android:layout_marginStart="85dp"
-                android:layout_marginTop="45dp"
+                android:layout_marginTop="@dimen/basicSignUpButtonMarginTop"
                 android:background="@drawable/round_shape_btn_l_gray"
                 android:fontFamily="@font/roboto_light"
                 android:text="Sign-up"
@@ -126,13 +123,13 @@
                 android:id="@+id/corpLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="47dp"
-                android:layout_marginStart="47dp"
-                android:layout_marginTop="144dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="@dimen/mandeleiMarginTop"
                 android:fontFamily="@font/roboto_light"
                 android:text="\u00A9 Mandelei Multimedia Corp"
                 android:textColor="#ffffff"
-                android:textSize="22sp"
+                android:textSize="@dimen/textSizeHeader3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
 
@@ -140,8 +137,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/signUpButtonFacebook" />
         </android.support.constraint.ConstraintLayout>
     </android.support.v4.widget.NestedScrollView>
-
-
 
 
 </android.support.constraint.ConstraintLayout>
