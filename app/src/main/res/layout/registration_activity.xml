@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#2D2D2D"
-    tools:context="gab.cdi.teleo.activities.Registration"
+    tools:context="gab.cdi.teleo.main.activities.Registration"
     tools:layout_editor_absoluteY="25dp">
 
     <android.support.v4.widget.NestedScrollView

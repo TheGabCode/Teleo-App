@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Teleo</string>
+
+    <string name="facebook_app_id">2147621832192466</string>
+    <string name="fb_login_protocol_scheme">fb2147621832192466</string>
+    <string name="fb_development_key_hash">bgCzqhdBq0OGFgMp/uixaeynsW0=</string>
 </resources>

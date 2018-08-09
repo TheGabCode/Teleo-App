@@ -1,7 +1,11 @@
-package gab.cdi.teleo.activities.session
+package gab.cdi.teleo.main.session
 
 import android.content.Context
 import android.content.SharedPreferences
+import gab.cdi.teleo.main.extension.string
+import gab.cdi.teleo.main.models.TeleoUser
+import org.json.JSONException
+import org.json.JSONObject
 
 /**
  * Created by Default on 08/08/2018.
@@ -15,6 +19,8 @@ class Session {
     var SHARED_PREFERENCE = "SHARED_PREFERENCE"
     var TOKEN = "TOKEN"
     var LOGGED = "LOGGED"
+    var USER_ID = "USER_ID"
+    var USER_DATA = "USER_DATA"
 
 
     constructor(context: Context?) {
@@ -24,12 +30,29 @@ class Session {
     }
 
     fun authorize(raw : String){
-        sharedPrefsEditor?.putString(TOKEN,raw)?.apply()
-        sharedPrefsEditor?.putBoolean(LOGGED,true)
+        var token : String? = null
+        try {
+            token = JSONObject(raw).getJSONObject("data").string("token")
+            sharedPrefsEditor?.putString(USER_DATA,JSONObject(raw).getJSONObject("data").toString())
+        }
+        catch (e : JSONException){
+            e.printStackTrace()
+        }
+
+
+        sharedPrefsEditor?.putString(TOKEN,token)?.apply()
+        sharedPrefsEditor?.putBoolean(LOGGED,true)?.apply()
+
     }
 
-    fun user() : String? {
+
+    fun token() : String? {
         return sharedPrefs?.getString(TOKEN,"")
+    }
+
+    fun user() : TeleoUser? {
+        var json   = JSONObject(sharedPrefs?.getString(USER_DATA,""))
+        return TeleoUser(json)
     }
 
     fun isUserLoggedIn() : Boolean? {

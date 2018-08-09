@@ -1,4 +1,4 @@
-package gab.cdi.teleo.activities.https
+package gab.cdi.teleo.main.https
 
 import android.app.ProgressDialog
 import android.content.Context
@@ -117,19 +117,17 @@ object ApiRequest{
         }
     }
 
-//    fun get(context: Context?, url: String, header: HashMap<String, String>,  params: HashMap<String, String>, url_callback: URLCallback?){
-//        val url : String = "https://api.myjson.com/bins/wjpco"
-//        val request : JsonObjectRequest = JsonObjectRequest(Request.Method.GET,url,null,
-//                Response.Listener { response ->
-//
-//                    }
-//                },
-//                Response.ErrorListener { error ->
-//                    error.printStackTrace()
-//                })
-//
-//
-//        val requestCache = Volley.newRequestQueue(context)
-//        requestCache.add(request)
-//    }
+    fun get(context: Context?, url: String, header: HashMap<String, String>,  params: HashMap<String, String>, url_callback: URLCallback?, volley_error: ErrorCallback){
+        val queue = Volley.newRequestQueue(context)
+        val request : JsonObjectRequest = JsonObjectRequest(Request.Method.GET,url,null,
+                Response.Listener { response ->
+                    url_callback?.didURLResponse(response.toString())
+                },
+                Response.ErrorListener { error ->
+                    error.printStackTrace()
+                    volley_error.didURLError(error)
+                })
+        request.retryPolicy = retryPolicy
+        queue.add(request)
+    }
 }

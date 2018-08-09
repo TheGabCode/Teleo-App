@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="teleo_logo_size">70dp</dimen>
+    <dimen name="teleo_logo_size">100dp</dimen>
     <dimen name="textSizeHeader1">40sp</dimen>
     <dimen name="textSizeHeader2">30sp</dimen>
     <dimen name="textSizeHeader3">22sp</dimen>
@@ -8,4 +8,8 @@
     <dimen name="basicSignUpButtonMarginTop">80dp</dimen>
 
 
+
+    <dimen name="signUpViaAppBannerMarginTop">85dp</dimen>
+    <dimen name="termsConditionMarginTop">35dp</dimen>
+    <dimen name="signUpViaAppMandeleiMarginTop">65dp</dimen>
 </resources>

@@ -7,6 +7,8 @@
     <dimen name="mandeleiMarginTop">65dp</dimen>
     <dimen name="basicSignUpButtonMarginTop">45dp</dimen>
 
+    <dimen name="signUpViaAppButtonHeight">30dp</dimen>
+
     <dimen name="signUpViaAppBannerMarginTop">45dp</dimen>
     <dimen name="termsConditionMarginTop">20dp</dimen>
     <dimen name="signUpViaAppMandeleiMarginTop">40dp</dimen>

@@ -1,6 +1,7 @@
-package gab.cdi.teleo.activities
+package gab.cdi.teleo.main.activities
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.res.ResourcesCompat
@@ -11,10 +12,11 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import com.android.volley.VolleyError
+import com.dealoka.sales.models.ModelCreator
 import gab.cdi.teleo.R
-import gab.cdi.teleo.activities.https.API
-import gab.cdi.teleo.activities.https.ApiRequest
-import gab.cdi.teleo.activities.session.Session
+import gab.cdi.teleo.main.https.API
+import gab.cdi.teleo.main.https.ApiRequest
+import gab.cdi.teleo.main.session.Session
 import org.json.JSONObject
 import java.util.regex.Pattern
 
@@ -36,6 +38,7 @@ class SignUpViaApp : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up_via_app)
 
         mSession = Session(this)
+
         setupFields()
 
     }
@@ -84,7 +87,7 @@ class SignUpViaApp : AppCompatActivity() {
         }
 
         postSignUp()
-        Toast.makeText(applicationContext,"Success",Toast.LENGTH_SHORT).show()
+
     }
 
     private fun postSignUp(){
@@ -93,7 +96,6 @@ class SignUpViaApp : AppCompatActivity() {
         params.put("password","111")
         params.put("firstName","LLoyd")
         params.put("lastName","Verastig!!!")
-       // params.put("roleId","customer")
         params.put("addressLine1","Calauan")
         params.put("addressLine2","Los Banos")
         params.put("addressProvince","Laguna")
@@ -101,19 +103,18 @@ class SignUpViaApp : AppCompatActivity() {
         params.put("contactNumber",phoneNumberEditText.text.toString().trim())
         params.put("emailAddress",emailEditText.text.toString().trim())
 
-
         ApiRequest.post(this, API.SIGN_UP,params,
                 object : ApiRequest.URLCallback {
                     override fun didURLResponse(response: String) {
                         Log.d("Response ",response + " " + params.toString())
-
                         val json : Boolean = JSONObject(response).getBoolean("success")
                         if(json){
-                            var token : String = JSONObject(response).getJSONObject("data").getString("token")
-                            mSession?.authorize(token)
+                            mSession?.authorize(response)
+                            Toast.makeText(applicationContext,"Success",Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this@SignUpViaApp,LandingActivity::class.java)
+                            startActivity(intent)
                         }
                         else{
-
                         }
 
                     }
@@ -121,6 +122,7 @@ class SignUpViaApp : AppCompatActivity() {
                 },
                 object : ApiRequest.ErrorCallback{
                     override fun didURLError(error: VolleyError) {
+                        Toast.makeText(applicationContext,"Error",Toast.LENGTH_SHORT).show()
                         Log.d("Error ", error.toString())
                     }
 
