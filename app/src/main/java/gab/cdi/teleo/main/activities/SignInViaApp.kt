@@ -1,5 +1,6 @@
 package gab.cdi.teleo.main.activities
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -23,6 +24,17 @@ class SignInViaApp : AppCompatActivity() {
         teleo_sign_in_button.setOnClickListener {
             postSignInViaApp()
         }
+
+
+        sign_up_option_textview.setOnClickListener {
+            redirectSignUpViaAppOption()
+        }
+    }
+
+    private fun redirectSignUpViaAppOption(){
+        val signUpIntent = Intent(this,SignUpViaApp::class.java)
+        this@SignInViaApp.finish()
+        startActivity(signUpIntent)
     }
 
     private fun postSignInViaApp(){
@@ -34,7 +46,11 @@ class SignInViaApp : AppCompatActivity() {
         ApiRequest.post(this, API.SIGN_IN,params,
                 object : ApiRequest.URLCallback{
                     override fun didURLResponse(response: String) {
+                        Log.d("ResponseZZZ",response)
                         mSession?.authorizeLogIn(response)
+                        val homeIntent = Intent(this@SignInViaApp,TeleoNavigationActivity::class.java)
+                        this@SignInViaApp.finish()
+                        startActivity(homeIntent)
                     }
                 },
                 object : ApiRequest.ErrorCallback{

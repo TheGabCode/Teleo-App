@@ -43,7 +43,7 @@ object ApiRequest{
      * @param url_callback calling back the response data from volley request
      */
     fun post(context: Context?, url: String, params: HashMap<String, String>, url_callback: URLCallback?, volley_error : ErrorCallback) {
-        var progressDialog = ProgressDialog(context)
+        val progressDialog = ProgressDialog(context)
         progressDialog.setMessage("Signing up...")
         progressDialog.setCancelable(false)
         progressDialog.show()
@@ -74,12 +74,13 @@ object ApiRequest{
      * @param params a hasmap o body parameters
      * @param url_callback calling back the response data from volley request
      */
-    fun post(context: Context?, url: String, header: HashMap<String, String>,  params: HashMap<String, String>, url_callback: URLCallback?) {
+    fun post(context: Context?, url: String, header: HashMap<String, String>,  params: HashMap<String, String>, url_callback: URLCallback?,volley_error : ErrorCallback) {
         val queue = Volley.newRequestQueue(context)
         val request = object : StringRequest(Request.Method.POST, url, Response.Listener { response ->
             url_callback?.didURLResponse(response)
 
         }, Response.ErrorListener { error ->
+            volley_error.didURLError(error)
             showVolleyError(context, error)
         }) {
             override fun getHeaders(): MutableMap<String, String> {

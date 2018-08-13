@@ -4,13 +4,16 @@
     <dimen name="textSizeHeader1">36sp</dimen>
     <dimen name="textSizeHeader2">24sp</dimen>
     <dimen name="textSizeHeader3">20sp</dimen>
+    <dimen name="textSizeHeader4">18sp</dimen>
     <dimen name="mandeleiMarginTop">90dp</dimen>
     <dimen name="basicSignUpButtonMarginTop">40dp</dimen>
-
-
 
     <dimen name="signUpViaAppBannerMarginTop">65dp</dimen>
     <dimen name="termsConditionMarginTop">25dp</dimen>
     <dimen name="signUpViaAppMandeleiMarginTop">50dp</dimen>
 
+    <dimen name="textSizeSmall">12sp</dimen>
+    <dimen name="textSizeNormal">18sp</dimen>
+    <dimen name="textSizeLarge">22sp</dimen>
+    <dimen name="textSizeLarger">36sp</dimen>
 </resources>

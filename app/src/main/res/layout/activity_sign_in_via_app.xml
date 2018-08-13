@@ -13,10 +13,12 @@
         app:layout_constraintHeight_percent="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <ImageView
             android:id="@+id/teleo_logo"
             android:layout_width="@dimen/teleo_logo_size"
             android:layout_height="@dimen/teleo_logo_size"
+            android:layout_marginBottom="4dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:src="@drawable/teleo_logo"
@@ -34,15 +36,14 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/teleo_logo_container">
-
         <EditText
             android:id="@+id/username_edittext"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="60dp"
             android:background="#ffffff"
             android:hint="Username"
+            android:textSize="@dimen/textSizeHeader3"
             android:paddingLeft="10dp"
             android:textColor="#000"
             android:textColorHint="#000"
@@ -51,14 +52,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.7" />
-
         <EditText
             android:id="@+id/password_edittext"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="5dp"
             android:background="#ffffff"
             android:hint="Password"
+            android:textSize="@dimen/textSizeHeader3"
             android:inputType="textPassword"
             android:paddingLeft="10dp"
             android:textColor="#000"
@@ -69,18 +70,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/username_edittext"
             app:layout_constraintWidth_percent="0.7" />
-
         <TextView
             android:id="@+id/teleo_forgot_password_option"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="154dp"
-            android:layout_marginStart="154dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="5dp"
             android:fontFamily="@font/roboto_light"
             android:text="Forgot password"
             android:textColor="#fff"
-            android:textSize="16sp"
+            android:textSize="@dimen/textSizeHeader4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -111,15 +111,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.5" />
+
         <TextView
             android:id="@+id/sign_up_option_textview"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:textColor="#fff"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
             android:fontFamily="@font/roboto_light"
             android:text="No account yet? Click here "
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textColor="#fff"
+            android:textSize="@dimen/textSizeHeader4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/teleo_sign_in_button" />
@@ -133,7 +134,6 @@
         app:layout_constraintHeight_percent="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/teleo_sign_in_button_container">
-
         <TextView
             android:id="@+id/teleo_mandelei_corp"
             android:layout_width="wrap_content"
@@ -142,6 +142,7 @@
             android:layout_marginTop="19dp"
             android:fontFamily="@font/roboto_light"
             android:textColor="#fff"
+            android:textSize="@dimen/textSizeHeader3"
             android:text="\u00A9 Mandelei Multimedia Corp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

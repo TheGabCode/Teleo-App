@@ -111,7 +111,7 @@ class SignUpViaApp : AppCompatActivity() {
                         if(json){
                             mSession?.authorize(response)
                             Toast.makeText(applicationContext,"Success",Toast.LENGTH_SHORT).show()
-                            val intent = Intent(this@SignUpViaApp,LandingActivity::class.java)
+                            val intent = Intent(this@SignUpViaApp,TeleoNavigationActivity::class.java)
                             startActivity(intent)
                         }
                         else{

@@ -46,7 +46,11 @@
         <activity android:name=".main.activities.SignUpViaApp" />
         <activity android:name=".main.activities.LandingActivity" />
         <activity android:name=".main.activities.SignUpViaFacebook" />
-        <activity android:name=".main.activities.SignInViaApp"></activity>
+        <activity android:name=".main.activities.SignInViaApp" />
+        <activity
+            android:name=".main.activities.TeleoNavigationActivity"
+            android:label=""
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
     </application>
 
 </manifest>

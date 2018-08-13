@@ -32,7 +32,6 @@ class SignUpViaFacebook : AppCompatActivity() {
                         val facebookProfileToken = loginResult.accessToken
                         val graphRequest = GraphRequest.newMeRequest(facebookProfileToken,
                                 GraphRequest.GraphJSONObjectCallback { `object`, response ->
-
                                     Log.d("FACEBOOK ",`object`.toString())
                                 })
                         val parameters = Bundle()
