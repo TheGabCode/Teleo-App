@@ -12,7 +12,7 @@ class Registration : AppCompatActivity() {
     private lateinit var signUpButtonFb : Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.registration_activity_2)
+        setContentView(R.layout.registration_activity)
         signUpButton = findViewById(R.id.signUpButton)
         signUpButton.setOnClickListener {
             signUp(true)
@@ -27,7 +27,7 @@ class Registration : AppCompatActivity() {
 
     private fun signUp(viaApp : Boolean){
         if(viaApp){
-            startActivity(Intent(this, SignUpViaApp::class.java))
+            startActivity(Intent(this, SignInViaApp::class.java))
             return
         }
         else{

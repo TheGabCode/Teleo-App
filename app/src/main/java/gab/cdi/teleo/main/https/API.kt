@@ -9,4 +9,6 @@ object API{
 
     val SIGN_UP = "$BASE_URL/user"
     val FETCH_USER_BY_ID = "$BASE_URL/user/"
+    val SIGN_IN = "$BASE_URL/auth/login"
+    val SIGN_OUT = "$BASE_URL/auth/logout"
 }

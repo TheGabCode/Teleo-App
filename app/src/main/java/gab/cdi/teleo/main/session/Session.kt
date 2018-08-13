@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import gab.cdi.teleo.main.extension.string
 import gab.cdi.teleo.main.models.TeleoUser
+import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -45,6 +46,18 @@ class Session {
 
     }
 
+    fun authorizeLogIn(raw : String){
+        var token : String? = null
+        try{
+            token = JSONObject(raw).getJSONObject("data").getJSONArray("items").getJSONObject(0).string("token")
+        }
+        catch (e : JSONException){
+            e.printStackTrace()
+        }
+
+        sharedPrefsEditor?.putString(TOKEN,token)?.apply()
+        sharedPrefsEditor?.putBoolean(LOGGED,true)?.apply()
+    }
 
     fun token() : String? {
         return sharedPrefs?.getString(TOKEN,"")
