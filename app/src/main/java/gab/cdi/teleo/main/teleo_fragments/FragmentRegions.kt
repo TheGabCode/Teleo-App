@@ -4,28 +4,21 @@ import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
 import gab.cdi.teleo.R
-import gab.cdi.teleo.main.adapters.AdapterProgram
-import gab.cdi.teleo.main.dummy.DummyData
-import gab.cdi.teleo.main.models.Program
-import kotlinx.android.synthetic.main.fragment_whats_on.*
-import org.json.JSONObject
 
 /**
  * A simple [Fragment] subclass.
  * Activities that contain this fragment must implement the
- * [FragmentWhatsOn.OnFragmentInteractionListener] interface
+ * [FragmentRegions.OnFragmentInteractionListener] interface
  * to handle interaction events.
- * Use the [FragmentWhatsOn.newInstance] factory method to
+ * Use the [FragmentRegions.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FragmentWhatsOn : Fragment() {
+class FragmentRegions : Fragment() {
 
     // TODO: Rename and change types of parameters
     private var mParam1: String? = null
@@ -33,8 +26,6 @@ class FragmentWhatsOn : Fragment() {
 
     private var mListener: OnFragmentInteractionListener? = null
 
-    private var programs : ArrayList<Program> = ArrayList()
-    private var programRecyclerView : RecyclerView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
@@ -46,11 +37,7 @@ class FragmentWhatsOn : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-
-        val view =  inflater.inflate(R.layout.fragment_whats_on, container, false)
-        initUI(view)
-        populateProgramRecyclerView()
-        return view
+        return inflater.inflate(R.layout.fragment_regions, container, false)
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -58,10 +45,6 @@ class FragmentWhatsOn : Fragment() {
         if (mListener != null) {
             mListener!!.onFragmentInteraction(uri)
         }
-    }
-
-    private fun initUI(view : View?){
-        programRecyclerView = view?.findViewById(R.id.programsRecyclerView)
     }
 
     override fun onAttach(context: Context?) {
@@ -76,16 +59,6 @@ class FragmentWhatsOn : Fragment() {
     override fun onDetach() {
         super.onDetach()
         mListener = null
-    }
-
-    private fun populateProgramRecyclerView(){
-        val dummyData = DummyData()
-        DummyData.programs.clear()
-        dummyData.initPrograms()
-        DummyData.programs.sortBy({ it.programNumber })
-        programRecyclerView?.layoutManager = LinearLayoutManager(activity)
-        programRecyclerView?.adapter = AdapterProgram(DummyData.programs,activity, AdapterProgram.WHATS_ON)
-        programRecyclerView?.isNestedScrollingEnabled = false
     }
 
     /**
@@ -114,11 +87,11 @@ class FragmentWhatsOn : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment FragmentWhatsOn.
+         * @return A new instance of fragment FragmentRegions.
          */
         // TODO: Rename and change types and number of parameters
-        fun newInstance(param1: String, param2: String): FragmentWhatsOn {
-            val fragment = FragmentWhatsOn()
+        fun newInstance(param1: String, param2: String): FragmentRegions {
+            val fragment = FragmentRegions()
             val args = Bundle()
             args.putString(ARG_PARAM1, param1)
             args.putString(ARG_PARAM2, param2)

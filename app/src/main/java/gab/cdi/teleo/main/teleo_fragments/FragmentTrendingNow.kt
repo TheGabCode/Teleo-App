@@ -12,9 +12,9 @@ import android.view.ViewGroup
 
 import gab.cdi.teleo.R
 import gab.cdi.teleo.main.adapters.AdapterProgram
+import gab.cdi.teleo.main.dummy.DummyData
 import gab.cdi.teleo.main.models.Program
-import kotlinx.android.synthetic.main.fragment_trending_now.*
-import org.json.JSONObject
+
 
 /**
  * A simple [Fragment] subclass.
@@ -62,37 +62,13 @@ class FragmentTrendingNow : Fragment() {
     }
 
     private fun populateProgramRecyclerView(){
-        programs.clear()
-        val jsonProgramOne  = JSONObject()
-        val jsonProgramTwo  = JSONObject()
-        val jsonProgramThree  = JSONObject()
-
-        jsonProgramOne.put("programId","1")
-        jsonProgramOne.put("programTitle","Gab's Elem Life")
-        jsonProgramOne.put("programDescription","Joseph's quiet elementary school life in Don Bosco SXL.")
-        jsonProgramOne.put("programNumber","3")
-
-        jsonProgramTwo.put("programId","2")
-        jsonProgramTwo.put("programTitle","Gab's HS Life")
-        jsonProgramTwo.put("programDescription","Gab's crazy PGMNHS adventure with new found friends for life.")
-        jsonProgramTwo.put("programNumber","2")
-
-        jsonProgramThree.put("programId","3")
-        jsonProgramThree.put("programTitle","Gab's Pre-Life Chapter")
-        jsonProgramThree.put("programDescription","Gab's lesson-filled college life in UPLB")
-        jsonProgramThree.put("programNumber","1")
-
-        programs.add(Program(jsonProgramOne))
-        programs.add(Program(jsonProgramTwo))
-        programs.add(Program(jsonProgramThree))
-
-        programs.sortBy({ it.programNumber })
+        val dummyData = DummyData()
+        DummyData.programs.clear()
+        dummyData.initPrograms()
+        DummyData.programs.sortBy({ it.programNumber })
         programRecyclerView?.layoutManager = LinearLayoutManager(activity)
-        programRecyclerView?.adapter = AdapterProgram(programs,activity, AdapterProgram.TRENDING)
+        programRecyclerView?.adapter = AdapterProgram(DummyData.programs,activity, AdapterProgram.TRENDING)
         programRecyclerView?.isNestedScrollingEnabled = false
-
-
-
     }
 
     override fun onAttach(context: Context?) {

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:paddingStart="20dp"
+        android:paddingLeft="20dp">
+        <TextView
+            android:id="@+id/regionName"
+            android:layout_width="0dp"
+            android:layout_weight="0.8"
+            android:layout_height="70dp"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="#fff"
+            android:textSize="@dimen/textSizeNormal"
+            android:gravity="center_vertical"
+            android:text="Australia and Pacific Islands"/>
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="20px"
+            android:src="@drawable/icon_sort_down_50px"/>
+    </LinearLayout>
+
+</LinearLayout>
