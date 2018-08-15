@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="teleo_logo_size">100dp</dimen>
-    <dimen name="textSizeHeader1">40sp</dimen>
-    <dimen name="textSizeHeader2">30sp</dimen>
-    <dimen name="textSizeHeader3">22sp</dimen>
+    <dimen name="textSizeHeader1">36sp</dimen>
+    <dimen name="textSizeHeader2">24sp</dimen>
+    <dimen name="textSizeHeader3">20sp</dimen>
     <dimen name="textSizeHeader4">18sp</dimen>
     <dimen name="mandeleiMarginTop">140dp</dimen>
     <dimen name="basicSignUpButtonMarginTop">80dp</dimen>
@@ -12,8 +12,9 @@
     <dimen name="termsConditionMarginTop">35dp</dimen>
     <dimen name="signUpViaAppMandeleiMarginTop">65dp</dimen>
 
-    <dimen name="textSizeSmall">20sp</dimen>
-    <dimen name="textSizeNormal">24sp</dimen>
-    <dimen name="textSizeLarge">32sp</dimen>
-    <dimen name="textSizeLarger">36sp</dimen>
+    <dimen name="textSizeSmall">12sp</dimen>
+    <dimen name="textSizeNormal">18sp</dimen>
+    <dimen name="textSizeLarge">20sp</dimen>
+    <dimen name="textSizeLarger">26sp</dimen>
+
 </resources>

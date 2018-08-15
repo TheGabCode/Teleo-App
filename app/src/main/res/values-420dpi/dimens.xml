@@ -12,9 +12,9 @@
     <dimen name="termsConditionMarginTop">35dp</dimen>
     <dimen name="signUpViaAppMandeleiMarginTop">65dp</dimen>
 
-    <dimen name="textSizeSmall">12sp</dimen>
-    <dimen name="textSizeNormal">18sp</dimen>
-    <dimen name="textSizeLarge">22sp</dimen>
+    <dimen name="textSizeSmall">20sp</dimen>
+    <dimen name="textSizeNormal">24sp</dimen>
+    <dimen name="textSizeLarge">30sp</dimen>
     <dimen name="textSizeLarger">36sp</dimen>
 
 </resources>

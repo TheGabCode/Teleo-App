@@ -165,7 +165,7 @@
                 android:layout_width="150dp"
                 android:layout_height="55dp"
                 android:layout_marginTop="@dimen/termsConditionMarginTop"
-                android:background="@drawable/round_shape_btn_l_gray"
+                android:background="@drawable/background_round_shape_btn_l_gray"
                 android:fontFamily="@font/roboto_light"
                 android:text="Sign up"
                 android:textAllCaps="false"

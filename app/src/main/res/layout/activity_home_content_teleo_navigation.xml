@@ -7,6 +7,6 @@
     android:id="@+id/teleoNavigationContent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="gab.cdi.teleo.main.activities.TeleoNavigationActivity"
-    tools:showIn="@layout/app_bar_teleo_navigation">
+    tools:showIn="@layout/activity_home_app_bar_teleo_navigation">
 
 </FrameLayout>

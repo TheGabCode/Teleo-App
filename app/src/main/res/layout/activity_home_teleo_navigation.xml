@@ -9,7 +9,7 @@
     tools:openDrawer="start">
 
     <include
-        layout="@layout/app_bar_teleo_navigation"
+        layout="@layout/activity_home_app_bar_teleo_navigation"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -30,7 +30,7 @@
                 android:orientation="vertical">
                 <include
                     android:id="@+id/teleoDrawer"
-                    layout="@layout/drawer_teleo"/>
+                    layout="@layout/activity_home_drawer_teleo"/>
             </LinearLayout>
         </ScrollView>
     </android.support.design.widget.NavigationView>

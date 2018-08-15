@@ -69,11 +69,11 @@ class Session {
     }
 
     fun isUserLoggedIn() : Boolean? {
-        return sharedPrefs?.getBoolean(TOKEN,false)
+        return sharedPrefs?.getBoolean(LOGGED,false)
     }
 
     fun deauthorize(){
-        sharedPrefsEditor?.clear()
+        sharedPrefsEditor?.clear()?.commit()
     }
 
 }

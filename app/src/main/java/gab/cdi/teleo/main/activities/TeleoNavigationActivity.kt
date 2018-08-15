@@ -1,6 +1,7 @@
 package gab.cdi.teleo.main.activities
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
@@ -16,14 +17,18 @@ import gab.cdi.teleo.R
 import gab.cdi.teleo.main.https.API
 import gab.cdi.teleo.main.https.ApiRequest
 import gab.cdi.teleo.main.session.Session
-import kotlinx.android.synthetic.main.activity_teleo_navigation.*
-import kotlinx.android.synthetic.main.app_bar_teleo_navigation.*
+import gab.cdi.teleo.main.teleo_fragments.FragmentHome
+import gab.cdi.teleo.main.teleo_fragments.FragmentTrendingNow
+import gab.cdi.teleo.main.teleo_fragments.FragmentWhatsOn
+import gab.cdi.teloe.main.teleo_fragments.FragmentTeleo
+import kotlinx.android.synthetic.main.activity_home_teleo_navigation.*
+import kotlinx.android.synthetic.main.activity_home_app_bar_teleo_navigation.*
 
-class TeleoNavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+class TeleoNavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, FragmentTeleo {
     private lateinit var mSession : Session
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_teleo_navigation)
+        setContentView(R.layout.activity_home_teleo_navigation)
         setSupportActionBar(toolbar)
         mSession = Session(this)
         val toggle = ActionBarDrawerToggle(
@@ -32,6 +37,7 @@ class TeleoNavigationActivity : AppCompatActivity(), NavigationView.OnNavigation
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+        displaySelectedView(R.id.nav_home)
     }
 
     override fun onBackPressed() {
@@ -73,36 +79,80 @@ class TeleoNavigationActivity : AppCompatActivity(), NavigationView.OnNavigation
         displaySelectedView(id)
     }
 
-    private fun displaySelectedView(id : Int?){
+    fun displaySelectedView(id : Int?){
         var fragment : Fragment? = null
+        var tag : String? = null
         var mFragment = supportFragmentManager.findFragmentById(R.id.teleoNavigationContent)
         when(id){
             R.id.logout -> {
                 logout()
             }
+
+            R.id.nav_home -> {
+                if(mFragment is FragmentHome){
+                    drawer_layout.closeDrawer(GravityCompat.START)
+                    return
+                }
+                fragment = FragmentHome()
+                tag = "fragmentHome"
+            }
+
+            R.id.nav_whats_on -> {
+                if(mFragment is FragmentWhatsOn){
+                    drawer_layout.closeDrawer(GravityCompat.START)
+                    return
+                }
+                fragment = FragmentWhatsOn()
+                tag = "fragmentWhatsOn"
+            }
+
+            R.id.nav_trending -> {
+                if(mFragment is FragmentTrendingNow){
+                    drawer_layout.closeDrawer(GravityCompat.START)
+                    return
+                }
+                fragment = FragmentTrendingNow()
+                tag = "fragmentTrendingNow"
+            }
         }
+
+        if(fragment != null){
+            val ft = supportFragmentManager.beginTransaction()
+            ft.replace(R.id.teleoNavigationContent,fragment,tag)
+            ft.commit()
+        }
+        drawer_layout.closeDrawer(GravityCompat.START)
     }
 
     private fun logout(){
         val header = HashMap<String,String>()
         val params = HashMap<String,String>()
         header.put("x-access-token",mSession.token()!!)
-        ApiRequest.post(this, API.SIGN_OUT,header,params,
-                object : ApiRequest.URLCallback{
-                    override fun didURLResponse(response: String) {
-                        Log.d("ResponseLOGOUT ",response)
-                        this@TeleoNavigationActivity.finish()
-                        val signInInent = Intent(this@TeleoNavigationActivity,Registration::class.java)
-                        startActivity(signInInent)
-                    }
+        Log.d("Tag",mSession.token())
+        mSession.deauthorize()
+        val signInInent = Intent(this@TeleoNavigationActivity,Registration::class.java)
+        startActivity(signInInent)
+        this@TeleoNavigationActivity.finish()
+//        ApiRequest.post(this, API.SIGN_OUT,header,params,
+//                object : ApiRequest.URLCallback{
+//                    override fun didURLResponse(response: String) {
+//                        Log.d("ResponseLOGOUT ",response)
+//                        this@TeleoNavigationActivity.finish()
+//                        val signInInent = Intent(this@TeleoNavigationActivity,Registration::class.java)
+//                        startActivity(signInInent)
+//                    }
+//
+//                },
+//                object : ApiRequest.ErrorCallback{
+//                    override fun didURLError(error: VolleyError) {
+//
+//                    }
+//
+//                })
 
-                },
-                object : ApiRequest.ErrorCallback{
-                    override fun didURLError(error: VolleyError) {
+    }
 
-                    }
-
-                })
+    override fun onFragmentInteraction(uri: Uri) {
 
     }
 }
