@@ -1,0 +1,96 @@
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="gab.cdi.teleo.main.teleo_fragments.FragmentAboutTeleo"
+    android:background="#FFFFFF"
+    >
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="20dp"
+        >
+
+        <LinearLayout
+            android:id="@+id/aboutLabelContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="About Teleo"
+                android:textColor="#2D2E2D"
+                android:textSize="@dimen/textSizeLarger"
+                android:layout_marginBottom="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:textSize="@dimen/textSizeNormal"
+                android:textColor="#000000"
+                android:text="Teleo is the television-online multimedia app by Mandelei Multimedia Corp. "/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/aboutContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:layout_marginTop="70dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/aboutLabelContainer"
+            android:paddingLeft="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="#232323"
+                android:layout_marginBottom="30dp"
+                android:text="Teleo Terms of Service"
+                android:textSize="@dimen/textSizeNormal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="#232323"
+                android:layout_marginBottom="60dp"
+                android:text="Mandelei Privacy Policy"
+                android:textSize="@dimen/textSizeNormal"/>
+
+            <TextView
+                android:onClick="onClick"
+                android:id="@+id/teleoMicrositeShow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="#232323"
+                android:layout_marginBottom="30dp"
+                android:text="Teleo Shows"
+                android:textSize="@dimen/textSizeNormal"
+                tools:ignore="OnClick" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="#232323"
+                android:layout_marginBottom="30dp"
+                android:text="Shows Microsite"
+                android:textSize="@dimen/textSizeNormal"/>
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v4.widget.NestedScrollView>

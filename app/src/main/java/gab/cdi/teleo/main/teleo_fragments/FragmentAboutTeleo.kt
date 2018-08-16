@@ -4,25 +4,21 @@ import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
 import gab.cdi.teleo.R
-import gab.cdi.teleo.main.adapters.AdapterRegion
-import gab.cdi.teleo.main.dummy.DummyData
 
 /**
  * A simple [Fragment] subclass.
  * Activities that contain this fragment must implement the
- * [FragmentRegions.OnFragmentInteractionListener] interface
+ * [FragmentAboutTeleo.OnFragmentInteractionListener] interface
  * to handle interaction events.
- * Use the [FragmentRegions.newInstance] factory method to
+ * Use the [FragmentAboutTeleo.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FragmentRegions : Fragment() {
+class FragmentAboutTeleo : Fragment() {
 
     // TODO: Rename and change types of parameters
     private var mParam1: String? = null
@@ -30,7 +26,6 @@ class FragmentRegions : Fragment() {
 
     private var mListener: OnFragmentInteractionListener? = null
 
-    private lateinit var regionRecyclerView : RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
@@ -42,10 +37,7 @@ class FragmentRegions : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_regions, container, false)
-        initUI(view)
-        populateRegions()
-        return view
+        return inflater.inflate(R.layout.fragment_about_teleo, container, false)
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -55,19 +47,6 @@ class FragmentRegions : Fragment() {
         }
     }
 
-    fun initUI(view : View){
-        regionRecyclerView = view.findViewById(R.id.regionRecyclerView)
-    }
-
-    private fun populateRegions(){
-        val dummy = DummyData()
-        DummyData.regions.clear()
-        dummy.initRegions()
-        regionRecyclerView.layoutManager = LinearLayoutManager(activity)
-        regionRecyclerView.adapter = AdapterRegion(DummyData.regions,activity)
-        regionRecyclerView.isNestedScrollingEnabled = false
-
-    }
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         if (context is OnFragmentInteractionListener) {
@@ -108,11 +87,11 @@ class FragmentRegions : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment FragmentRegions.
+         * @return A new instance of fragment FragmentAboutTeleo.
          */
         // TODO: Rename and change types and number of parameters
-        fun newInstance(param1: String, param2: String): FragmentRegions {
-            val fragment = FragmentRegions()
+        fun newInstance(param1: String, param2: String): FragmentAboutTeleo {
+            val fragment = FragmentAboutTeleo()
             val args = Bundle()
             args.putString(ARG_PARAM1, param1)
             args.putString(ARG_PARAM2, param2)

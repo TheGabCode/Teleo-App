@@ -1,6 +1,7 @@
 package gab.cdi.teleo.main.adapters
 
 import android.content.Context
+import android.content.res.Configuration
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -42,6 +43,15 @@ class AdapterProgram(val programs : ArrayList<Program>, val context : Context?, 
             TRENDING -> {
                 holder.programNumber.text = thisProgram.programNumber
                 holder.programNumber.visibility = View.VISIBLE
+                holder.programNumber.text = thisProgram.programNumber
+
+            }
+
+            SHOWS -> {
+                if(context?.resources?.configuration?.orientation == Configuration.ORIENTATION_PORTRAIT){
+                    holder.programName.visibility = View.GONE
+                    holder.programDescription.visibility = View.GONE
+                }
 
             }
 //            SHOWS -> {
@@ -68,9 +78,8 @@ class AdapterProgram(val programs : ArrayList<Program>, val context : Context?, 
         }
         holder.programName.text = thisProgram.programTitle
         holder.programDescription.text = thisProgram.programDescription
-        holder.programNumber.text = thisProgram.programNumber
+
 //        val thumbnailReference  = storageReference.reference.child("programs/${thisProgram.programThumbnailUrl}")
-        Log.d("Tag ",thisProgram.programThumbnailUrl )
 //        if(context != null){
 //            GlideApp.with(context)
 //                    .load(R.drawable.fragment_home_online)

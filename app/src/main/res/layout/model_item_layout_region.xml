@@ -2,7 +2,8 @@
 <LinearLayout
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,10 +15,10 @@
             android:id="@+id/regionName"
             android:layout_width="0dp"
             android:layout_weight="0.8"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
             android:textColor="#fff"
-            android:textSize="@dimen/textSizeNormal"
+            android:textSize="@dimen/textSizeLarge"
             android:gravity="center_vertical"
             android:text="Australia and Pacific Islands"/>
         <ImageView
@@ -27,5 +28,12 @@
             android:layout_height="20px"
             android:src="@drawable/icon_sort_down_50px"/>
     </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/regionCountriesRecyclerView"
+        android:visibility="gone"
+        android:layout_marginStart="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp" />
 
 </LinearLayout>

@@ -11,4 +11,10 @@ class Region(var regionObject : JSONObject){
     var regionId = regionObject.optString("regionId","")
     var regionName = regionObject.optString("regionName","")
     var regionCountries = regionObject.optJSONArray("regionCountries")
+
+    class Country(var countryObject : JSONObject){
+        var countryId = countryObject.optString("countryId")
+        var regionId = countryObject.optString("regionId")
+        var countryName = countryObject.optString("countryName")
+    }
 }

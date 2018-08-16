@@ -118,7 +118,7 @@
             android:orientation="vertical"
             android:paddingTop="25dp"
             android:paddingBottom="10dp"
-            android:background="@drawable/background_border_light_light_gray"
+            android:background="@drawable/background_border_light_light_gray_up"
             >
             <LinearLayout
                 android:paddingStart="20dp"
@@ -212,7 +212,7 @@
         <LinearLayout
             android:id="@+id/teleoDrawerSubgroup3"
             android:layout_width="match_parent"
-            android:background="@drawable/background_border_light_light_gray"
+            android:background="@drawable/background_border_light_light_gray_up"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingTop="25dp"

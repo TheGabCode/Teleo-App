@@ -11,18 +11,18 @@ import android.view.View
 import android.view.ViewGroup
 
 import gab.cdi.teleo.R
-import gab.cdi.teleo.main.adapters.AdapterRegion
+import gab.cdi.teleo.main.adapters.AdapterProgram
 import gab.cdi.teleo.main.dummy.DummyData
 
 /**
  * A simple [Fragment] subclass.
  * Activities that contain this fragment must implement the
- * [FragmentRegions.OnFragmentInteractionListener] interface
+ * [FragmentShows.OnFragmentInteractionListener] interface
  * to handle interaction events.
- * Use the [FragmentRegions.newInstance] factory method to
+ * Use the [FragmentShows.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FragmentRegions : Fragment() {
+class FragmentShows : Fragment() {
 
     // TODO: Rename and change types of parameters
     private var mParam1: String? = null
@@ -30,7 +30,7 @@ class FragmentRegions : Fragment() {
 
     private var mListener: OnFragmentInteractionListener? = null
 
-    private lateinit var regionRecyclerView : RecyclerView
+    private lateinit var programRecyclerView : RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
@@ -42,9 +42,9 @@ class FragmentRegions : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_regions, container, false)
+        val view = inflater.inflate(R.layout.fragment_shows, container, false)
         initUI(view)
-        populateRegions()
+        populateRecyclerView()
         return view
     }
 
@@ -55,19 +55,18 @@ class FragmentRegions : Fragment() {
         }
     }
 
-    fun initUI(view : View){
-        regionRecyclerView = view.findViewById(R.id.regionRecyclerView)
+    private fun initUI(view : View){
+        programRecyclerView = view.findViewById(R.id.programsRecyclerView)
     }
 
-    private fun populateRegions(){
-        val dummy = DummyData()
-        DummyData.regions.clear()
-        dummy.initRegions()
-        regionRecyclerView.layoutManager = LinearLayoutManager(activity)
-        regionRecyclerView.adapter = AdapterRegion(DummyData.regions,activity)
-        regionRecyclerView.isNestedScrollingEnabled = false
-
+    private fun populateRecyclerView(){
+        DummyData.programs.clear()
+        DummyData().initPrograms()
+        programRecyclerView.layoutManager = LinearLayoutManager(activity)
+        programRecyclerView.adapter = AdapterProgram(DummyData.programs,activity,AdapterProgram.SHOWS)
+        programRecyclerView.isNestedScrollingEnabled = false
     }
+
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         if (context is OnFragmentInteractionListener) {
@@ -108,11 +107,11 @@ class FragmentRegions : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment FragmentRegions.
+         * @return A new instance of fragment FragmentShows.
          */
         // TODO: Rename and change types and number of parameters
-        fun newInstance(param1: String, param2: String): FragmentRegions {
-            val fragment = FragmentRegions()
+        fun newInstance(param1: String, param2: String): FragmentShows {
+            val fragment = FragmentShows()
             val args = Bundle()
             args.putString(ARG_PARAM1, param1)
             args.putString(ARG_PARAM2, param2)

@@ -18,6 +18,7 @@ import gab.cdi.teleo.main.https.API
 import gab.cdi.teleo.main.https.ApiRequest
 import gab.cdi.teleo.main.session.Session
 import gab.cdi.teleo.main.teleo_fragments.FragmentHome
+import gab.cdi.teleo.main.teleo_fragments.FragmentRegions
 import gab.cdi.teleo.main.teleo_fragments.FragmentTrendingNow
 import gab.cdi.teleo.main.teleo_fragments.FragmentWhatsOn
 import gab.cdi.teloe.main.teleo_fragments.FragmentTeleo
@@ -88,6 +89,14 @@ class TeleoNavigationActivity : AppCompatActivity(), NavigationView.OnNavigation
                 logout()
             }
 
+            R.id.nav_region -> {
+                if(mFragment is FragmentRegions){
+                    drawer_layout.closeDrawer(GravityCompat.START)
+                    return
+                }
+                fragment = FragmentRegions()
+                tag = "fragmentRegions"
+            }
             R.id.nav_home -> {
                 if(mFragment is FragmentHome){
                     drawer_layout.closeDrawer(GravityCompat.START)
@@ -96,7 +105,6 @@ class TeleoNavigationActivity : AppCompatActivity(), NavigationView.OnNavigation
                 fragment = FragmentHome()
                 tag = "fragmentHome"
             }
-
             R.id.nav_whats_on -> {
                 if(mFragment is FragmentWhatsOn){
                     drawer_layout.closeDrawer(GravityCompat.START)
@@ -105,7 +113,6 @@ class TeleoNavigationActivity : AppCompatActivity(), NavigationView.OnNavigation
                 fragment = FragmentWhatsOn()
                 tag = "fragmentWhatsOn"
             }
-
             R.id.nav_trending -> {
                 if(mFragment is FragmentTrendingNow){
                     drawer_layout.closeDrawer(GravityCompat.START)
@@ -115,7 +122,6 @@ class TeleoNavigationActivity : AppCompatActivity(), NavigationView.OnNavigation
                 tag = "fragmentTrendingNow"
             }
         }
-
         if(fragment != null){
             val ft = supportFragmentManager.beginTransaction()
             ft.replace(R.id.teleoNavigationContent,fragment,tag)
