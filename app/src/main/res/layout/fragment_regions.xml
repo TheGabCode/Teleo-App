@@ -1,4 +1,4 @@
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -52,15 +52,19 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/teleoRegionBannerContainer" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/regionRecyclerView"
+        <ExpandableListView
+            android:id="@+id/regionExpandableListView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:groupIndicator="@null"
+            android:childDivider="@null"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:layout_marginTop="5dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/teleoRegionCurrentlySetTo"/>
+            app:layout_constraintTop_toBottomOf="@+id/teleoRegionCurrentlySetTo" />
     </android.support.constraint.ConstraintLayout>
 
-</android.support.v4.widget.NestedScrollView>
+</android.support.constraint.ConstraintLayout>

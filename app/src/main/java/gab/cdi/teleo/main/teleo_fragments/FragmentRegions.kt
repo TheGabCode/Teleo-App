@@ -1,6 +1,10 @@
 package gab.cdi.teleo.main.teleo_fragments
 
+
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -9,10 +13,14 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ExpandableListView
+import android.widget.Toast
 
 import gab.cdi.teleo.R
 import gab.cdi.teleo.main.adapters.AdapterRegion
+import gab.cdi.teleo.main.adapters.AdapterRegionTwo
 import gab.cdi.teleo.main.dummy.DummyData
+import kotlinx.android.synthetic.main.fragment_regions_expandable_listview_header.view.*
 
 /**
  * A simple [Fragment] subclass.
@@ -22,15 +30,16 @@ import gab.cdi.teleo.main.dummy.DummyData
  * Use the [FragmentRegions.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FragmentRegions : Fragment() {
+class FragmentRegions : Fragment(), ExpandableListView.OnGroupExpandListener{
+
 
     // TODO: Rename and change types of parameters
     private var mParam1: String? = null
     private var mParam2: String? = null
 
     private var mListener: OnFragmentInteractionListener? = null
-
-    private lateinit var regionRecyclerView : RecyclerView
+    private lateinit var regionExpandableListView : ExpandableListView
+    private var lastExpandedPosition : Int = -1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
@@ -44,7 +53,7 @@ class FragmentRegions : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_regions, container, false)
         initUI(view)
-        populateRegions()
+        //populateRegions()
         return view
     }
 
@@ -56,18 +65,45 @@ class FragmentRegions : Fragment() {
     }
 
     fun initUI(view : View){
-        regionRecyclerView = view.findViewById(R.id.regionRecyclerView)
-    }
-
-    private fun populateRegions(){
-        val dummy = DummyData()
         DummyData.regions.clear()
-        dummy.initRegions()
-        regionRecyclerView.layoutManager = LinearLayoutManager(activity)
-        regionRecyclerView.adapter = AdapterRegion(DummyData.regions,activity)
-        regionRecyclerView.isNestedScrollingEnabled = false
-
+        DummyData().initRegions()
+        //regionRecyclerView = view.findViewById(R.id.regionRecyclerView)
+        regionExpandableListView = view.findViewById(R.id.regionExpandableListView)
+        regionExpandableListView.setAdapter(AdapterRegionTwo(activity,DummyData.regions,DummyData.countries))
+        regionExpandableListView.setOnGroupClickListener { parent, v, groupPosition, id ->
+            if(lastExpandedPosition != -1 && groupPosition != lastExpandedPosition){
+                parent.collapseGroup(lastExpandedPosition)
+            }
+            lastExpandedPosition = groupPosition
+            if(parent.isGroupExpanded(groupPosition)){ //remove highlight
+                parent.collapseGroup(groupPosition)
+                v.setBackgroundColor(Color.parseColor("#00FF0000"))
+            }
+            else if(!parent.isGroupExpanded(groupPosition)){ //highlight
+                parent.expandGroup(groupPosition)
+                v.setBackgroundColor(Color.parseColor("#C4C4C4"))
+            }
+            true
+        }
     }
+
+    override fun onGroupExpand(groupPosition: Int) {
+        Toast.makeText(context,"Clicked",Toast.LENGTH_SHORT).show()
+        if(lastExpandedPosition != -1 && groupPosition != lastExpandedPosition){
+            regionExpandableListView.collapseGroup(lastExpandedPosition)
+        }
+        lastExpandedPosition = groupPosition
+    }
+
+//    private fun populateRegions(){
+//        val dummy = DummyData()
+//        DummyData.regions.clear()
+//        dummy.initRegions()
+//        regionRecyclerView.layoutManager = LinearLayoutManager(activity)
+//        regionRecyclerView.adapter = AdapterRegion(DummyData.regions,activity)
+//        regionRecyclerView.isNestedScrollingEnabled = false
+//
+//    }
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         if (context is OnFragmentInteractionListener) {
